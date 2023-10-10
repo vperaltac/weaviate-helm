@@ -83,6 +83,9 @@ securityContext: {}
 # By default, use the default ServiceAccount
 serviceAccountName:
 
+
+priorityClassName:
+
 # The Persistent Volume Claim settings for Weaviate. If there's a
 # storage.fullnameOverride field set, then the default pvc will not be
 # created, instead the one defined in fullnameOverride will be used
@@ -430,6 +433,7 @@ modules:
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
   # The text2vec-transformers modules uses neural networks, such as BERT,
   # DistilBERT, etc. to dynamically compute vector embeddings based on the
@@ -511,6 +515,7 @@ modules:
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
     passageQueryServices:
       passage:
@@ -581,6 +586,7 @@ modules:
         nodeSelector:
         tolerations:
         affinity:
+        priorityClassName:
 
       query:
         enabled: false
@@ -651,6 +657,7 @@ modules:
         nodeSelector:
         tolerations:
         affinity:
+        priorityClassName:
 
   # The text2vec-gpt4all is a vectorizer module that allows to run ML models from
   # nomic-ai/gpt4all: https://docs.gpt4all.io/gpt4all_python_embedding.html
@@ -706,12 +713,13 @@ modules:
 
     # You can guide where the pods are scheduled on a per-module basis,
     # as well as for Weaviate overall. Each module accepts nodeSelector,
-    # tolerations, and affinity configuration. If it is set on a per-
+    # tolerations, affinity and pod priority configuration. If it is set on a per-
     # module basis, this configuration overrides the global config.
 
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
   # The text2vec-openai module uses OpenAI Embeddings API
   # to dynamically compute vector embeddings based on the
@@ -848,6 +856,7 @@ modules:
     annotations:
     nodeSelector:
     tolerations:
+    priorityClassName:
 
   # The multi2vec-bind is a multi modal inference container it uses Meta's open
   # source ImageBind implementation as base for this module:
@@ -919,6 +928,7 @@ modules:
     annotations:
     nodeSelector:
     tolerations:
+    priorityClassName:
 
   # The qna-transformers module uses neural networks, such as BERT,
   # DistilBERT, to find an answer in text to a given question
@@ -992,6 +1002,7 @@ modules:
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
   # The qna-openai module uses OpenAI Completions API
   # to dynamically answer given questions.
@@ -1118,6 +1129,7 @@ modules:
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
   # The reranker-cohere module uses Cohere API
   # to dynamically compute a score for the relevance 
@@ -1206,6 +1218,7 @@ modules:
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
   # The text-spellcheck module uses spellchecker library to check
   # misspellings in a given text
@@ -1262,6 +1275,7 @@ modules:
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
   # The ner-transformers module uses spellchecker library to check
   # misspellings in a given text
@@ -1335,6 +1349,7 @@ modules:
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
   # The sum-transformers module makes result texts summarizations
   sum-transformers:
@@ -1407,6 +1422,7 @@ modules:
     nodeSelector:
     tolerations:
     affinity:
+    priorityClassName:
 
   # by choosing the default vectorizer module, you can tell Weaviate to always
   # use this module as the vectorizer if nothing else is specified. Can be

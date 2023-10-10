@@ -81,6 +81,11 @@ spec:
       tolerations:
         {{ toYaml . | nindent 8 }}
       {{- end }}
+      {{- if (index $module "priorityClassName") }}
+      priorityClassName: {{ index $module "priorityClassName" }}
+      {{- else if (index .Values "priorityClassName") }}
+      priorityClassName: {{ index .Values "priorityClassName" }}
+      {{- end }}
 ---
 apiVersion: v1
 kind: Service
@@ -171,6 +176,13 @@ spec:
       tolerations:
         {{ toYaml . | nindent 8 }}
       {{- end }}
+      {{- if (index $passage "priorityClassName") }}
+      priorityClassName: {{ index $module "priorityClassName" }}
+      {{- else if (index $module "priorityClassName") }}
+      priorityClassName: {{ index $module "priorityClassName" }}
+      {{- else if (index .Values "priorityClassName") }}
+      priorityClassName: {{ index .Values "priorityClassName" }}
+      {{- end }}
 ---
 apiVersion: v1
 kind: Service
@@ -257,6 +269,13 @@ spec:
       {{- with index $query "tolerations" | default .Values.tolerations }}
       tolerations:
         {{ toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if (index $query "priorityClassName") }}
+      priorityClassName: {{ index $module "priorityClassName" }}
+      {{- else if (index $module "priorityClassName") }}
+      priorityClassName: {{ index $module "priorityClassName" }}
+      {{- else if (index .Values "priorityClassName") }}
+      priorityClassName: {{ index .Values "priorityClassName" }}
       {{- end }}
 ---
 apiVersion: v1
